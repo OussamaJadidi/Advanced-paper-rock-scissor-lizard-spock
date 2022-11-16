@@ -12,8 +12,47 @@
     <link rel="stylesheet" href="./css/style.css">
     <!-- JavaScript links -->
     <script src="./javascript/main.js" defer></script>
+    <!-- Google Font "Barlow Semi Condensed"  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div class="container flex-on-column">
+      <header class="header | flex-on-row | margin-block">
+        <img src="./images/logo-bonus.svg" alt="rock paper scissors lizard spock">
+        <div class="score-box">
+          <h5 class="color-score">SCORE</h5>
+          <p class="score-box_number | color-text | fw-700">12</p>
+        </div>
+      </header>
+      <template id="choose-emote-hand">
+        <main class="main1">
+          <div class="game-rules">
+            <div class="game-rules_card">
+                <span class="flex-on-row">
+                  <h3 class="game-rules_card_label | color-text fw-700">RULES</h3>
+                  <img class="game-rules_card_close" src="./images/icon-close.svg" alt="close button">
+                </span>
+                <img class="game-rules_card_img" src="./images/image-rules-bonus.svg" alt="">
+                <img class="game-rules_card_close" aria-hidden="true" src="./images/icon-close.svg" alt="close button">
+            </div>
+            <div class="game-rules-mask"></div>
+          </div>
+          <section class="choices-hands | margin-block">
+            <img src="./images/bg-pentagon.svg" alt="">
+            <div class="scissors pattern"></div>
+            <div class="paper pattern"></div>
+            <div class="rock pattern"></div>
+            <div class="lizard pattern"></div>
+            <div class="spock pattern"></div>
+          </section>
+        </main>
+      </template>
+      <template id="show-both-choices">
 
+      </template>
+      <button class="button | rules-button | button_phone-version">RULES</button>
+    </div>
   </body>
 </html>

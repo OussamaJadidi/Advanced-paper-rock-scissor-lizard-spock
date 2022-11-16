@@ -1,2 +1,267 @@
-*{
+:root{
+    --bc-scissors: radial-gradient(hsl(39, 89%, 49%),hsl(40, 84%, 53%));
+    --bc-paper: radial-gradient(hsl(230, 89%, 62%),hsl(230, 89%, 65%));
+    --bc-rock: radial-gradient(hsl(349, 71%, 52%),hsl(349, 70%, 56%));
+    --bc-lizard: radial-gradient(hwb(261 31% 11%),hsl(261, 72%, 63%));
+    --bc-spock: radial-gradient(hsl(189, 59%, 53%),hsl(189, 58%, 57%));
+
+    --neutral-text: hsl(229, 25%, 31%);
+    --neutral-score: hsl(229, 64%, 46%);
+    --neutral-header: hsl(217, 16%, 45%);
+
+    --fw-600: 600;
+    --fw-700: 700;
 }
+*{
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background-image: radial-gradient(hsl(214, 47%, 23%),  hsl(237, 49%, 15%));
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* I gonna work with css CUBE metholodogie in this project*/
+
+/* Start Composition  */
+.container{
+    max-width: 44rem;
+    height: 100vh;
+    padding: 2rem;
+    margin: auto;
+}
+.flex-on-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.flex-on-row{
+    display: flex;
+    justify-content: space-between;
+}
+.button{
+    text-align: center;
+    padding-inline: 1.5rem;
+    padding-block: .5rem;
+    background-color: transparent;
+    border: 2px solid var(--neutral-header);
+    border-radius: .5rem;
+    color: white;
+    letter-spacing: 3px;
+    margin: auto;
+    cursor: pointer;
+}
+
+/* End Composition  */
+/* Start utilities  */
+.color-text{
+    color: var(--neutral-text);
+}
+.color-score{
+    color: var(--neutral-score)
+}
+.color-white{
+    color: white;
+}
+.margin-block{
+    margin-block: 2rem;
+}
+.fw-600{
+    font-weight: 600;
+}
+.fw-700{
+    font-weight: 700;
+}
+/* End utilities  */
+/* Start Block  */
+    /* start header  */
+    .header{
+        border: 3px solid var(--neutral-header);
+        border-radius: 1rem;
+        padding: 1rem;
+        height: 9rem;
+        margin-top: -0.5rem;
+    }
+    .header img{
+        height: 100%;
+    }
+    .score-box{
+        padding-block: auto;
+        aspect-ratio: 1;
+        text-align: center;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: .5rem;
+    }
+    .score-box h5{
+        margin-bottom: 0;
+    }
+    .score-box_number{
+        font-size: 3rem;
+        margin-top: 0;
+    }
+    /* End header  */
+    /* Start main  */
+    .main1{
+        margin-bottom: 4rem;
+    }
+        /* start Game rules page*/
+        .game-rules{
+            position: absolute;
+            inset: 0;
+        }
+        .game-rules_card span{
+            margin-bottom: 1rem;
+        }
+        @media(max-width: 40em) {
+            .game-rules_card span{
+                justify-content: center;
+            }
+        }
+        .game-rules_card{
+            position: absolute;
+            background-color: white;
+            z-index: 1;
+            padding: 2rem;
+            border-radius: .5rem;
+        }
+        @media(min-width: 40em) {
+            .game-rules_card{
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+            }
+        }
+        @media(max-width: 40em) {
+            .game-rules_card{
+                height: 100vh;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                padding-block: 5rem;
+            }
+        }
+        .game-rules_card_label{
+            font-size: 1.75rem;
+            margin: 0;
+        }
+        .game-rules_card_close{
+            height: 100%;
+            position: relative;
+            padding-top: 6px;
+            cursor: pointer;
+        }
+        @media(max-width: 40em) {
+            .game-rules_card_close{
+                display: none;
+            }
+        }
+        .game-rules_card_close[aria-hidden]{
+            display: none;
+        }
+        @media(max-width: 40em) {
+            .game-rules_card_close[aria-hidden]{
+                height: 2rem;
+                width: 1.5rem;
+                display: block;
+            }
+        }
+        .game-rules-mask{
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0,0,0,.5);
+        }
+        /* End Game rules  */
+    .choices-hands{
+        background-position: center;
+        position: relative;
+        max-width: 50%;
+        margin: auto;
+    }
+    .choices-hands img{
+        max-width: 100%;
+    }
+    @media(max-width: 50em) {
+        .choices-hands{
+           max-width: 70%;
+        }
+    }
+    .choices-hands :where(.scissors,.paper,.rock,.lizard,.spock){
+        position: absolute;
+    }
+    .scissors{
+        background: url("../images/icon-scissors.svg") content-box,linear-gradient(white,white) padding-box,
+        var(--bc-scissors) border-box;  
+        box-shadow: 0 5px rgba(0,0,0,.2) inset, 0 5px hsl(40, 84%, 40%);
+        top: -3rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .paper{
+        background: url("../images/icon-paper.svg") content-box,linear-gradient(white,white) padding-box,
+        var(--bc-paper) border-box;  
+        box-shadow: 0 5px rgba(0,0,0,.2) inset, 0 5px hsl(230, 89%,40%);
+        top: 3rem;
+        right: -2.5rem;
+    }
+    .rock{
+        background: url("../images/icon-rock.svg") content-box,linear-gradient(white,white) padding-box,
+        var(--bc-rock) border-box;  
+        box-shadow: 0 5px rgba(0,0,0,.2) inset, 0 5px hsl(349, 71%, 35%);
+        bottom: -3rem;
+        left: 60%;
+    }
+    .lizard{
+        background: url("../images/icon-lizard.svg") content-box,linear-gradient(white,white) padding-box,
+        var(--bc-lizard) border-box;  
+        box-shadow: 0 5px rgba(0,0,0,.2) inset, 0 5px hsl(261, 72%, 40%);
+        bottom: -3rem;
+        right: 60%;
+    }
+    .spock{
+        background: url("../images/icon-spock.svg") content-box,linear-gradient(white,white) padding-box,
+        var(--bc-spock) border-box;  
+        box-shadow: 0 5px rgba(0,0,0,.2) inset, 0 5px hsl(189, 59%, 39%);
+        top: 3rem;
+        left: -2.5rem;
+    }
+    .pattern{
+        width: 7em;
+        height: 7em;
+        border-radius: 9999999px;
+        border: .8rem solid transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+    @media(max-width:40em){
+        .choices-hands :where(.scissors,.paper,.rock,.lizard,.spock){
+            background-size: 50%,100%,100%;
+        }
+        .pattern{
+            width: 5.5em;
+            height: 5.5em; 
+        }
+    }
+    @media(max-width: 40em){
+        .rules-button{
+            margin-block: 2rem
+        }
+    }
+    /* End main  */
+    /* Start Rules button 'phone version'  */
+    @media(min-width: 40em) {
+        .button_phone-version{
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+        }
+    }
+    /* End Rules button 'phone version'  */
+
+/* End Block  */
