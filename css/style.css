@@ -77,121 +77,136 @@ body{
 }
 /* End utilities  */
 /* Start Block  */
-    /* start header  */
-    .header{
-        border: 3px solid var(--neutral-header);
-        border-radius: 1rem;
-        padding: 1rem;
-        height: 9rem;
-        margin-top: -0.5rem;
+/* start header  */
+.header{
+    border: 3px solid var(--neutral-header);
+    border-radius: 1rem;
+    padding: 1rem;
+    height: 9rem;
+    margin-top: -0.5rem;
+}
+.header img{
+    height: 100%;
+}
+.score-box{
+    padding-block: auto;
+    aspect-ratio: 1;
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: .5rem;
+}
+.score-box h5{
+    margin-bottom: 0;
+}
+.score-box__number{
+    font-size: 3rem;
+    margin-top: 0;
+}
+/* End header  */
+/* Start template1  */
+
+    /* start Game rules page*/
+    .game-rules{
+        position: absolute;
+        inset: 0;
     }
-    .header img{
-        height: 100%;
+    .game-rules-card span{
+        margin-bottom: 1rem;
     }
-    .score-box{
-        padding-block: auto;
-        aspect-ratio: 1;
-        text-align: center;
+    @media(max-width: 40em) {
+        .game-rules-card span{
+            justify-content: center;
+        }
+    }
+    .game-rules-card{
+        position: absolute;
         background-color: white;
-        border: 1px solid black;
+        z-index: 1;
+        padding: 2rem;
         border-radius: .5rem;
     }
-    .score-box h5{
-        margin-bottom: 0;
+    @media(min-width: 40em) {
+        .game-rules-card{
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
     }
-    .score-box_number{
-        font-size: 3rem;
-        margin-top: 0;
+    @media(max-width: 40em) {
+        .game-rules-card{
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding-block: 5rem;
+        }
     }
-    /* End header  */
-    /* Start main  */
+    .game-rules-card__label{
+        font-size: 1.75rem;
+        margin: 0;
+    }
+    .game-rules-card__close{
+        height: 100%;
+        position: relative;
+        padding-top: 6px;
+        cursor: pointer;
+    }
+    @media(max-width: 40em) {
+        .game-rules-card__close{
+            display: none;
+        }
+    }
+    .game-rules-card__close[aria-hidden]{
+        display: none;
+    }
+    @media(max-width: 40em) {
+        .game-rules-card__close[aria-hidden]{
+            height: 2rem;
+            width: 1.5rem;
+            display: block;
+        }
+    }
+    .game-rules--mask{
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0,0,0,.5);
+    }
+    /* End Game rules  */
+    /* Start main1  */
     .main1{
         margin-bottom: 4rem;
     }
-        /* start Game rules page*/
-        .game-rules{
-            position: absolute;
-            inset: 0;
-        }
-        .game-rules_card span{
-            margin-bottom: 1rem;
-        }
-        @media(max-width: 40em) {
-            .game-rules_card span{
-                justify-content: center;
-            }
-        }
-        .game-rules_card{
-            position: absolute;
-            background-color: white;
-            z-index: 1;
-            padding: 2rem;
-            border-radius: .5rem;
-        }
-        @media(min-width: 40em) {
-            .game-rules_card{
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%,-50%);
-            }
-        }
-        @media(max-width: 40em) {
-            .game-rules_card{
-                height: 100vh;
+    @media(min-width: 40em){
+        @media(min-height: 760px){
+            .main1{
                 position: relative;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-between;
-                padding-block: 5rem;
+                bottom: 20%;
             }
-        }
-        .game-rules_card_label{
-            font-size: 1.75rem;
-            margin: 0;
-        }
-        .game-rules_card_close{
-            height: 100%;
-            position: relative;
-            padding-top: 6px;
-            cursor: pointer;
-        }
-        @media(max-width: 40em) {
-            .game-rules_card_close{
-                display: none;
-            }
-        }
-        .game-rules_card_close[aria-hidden]{
-            display: none;
-        }
-        @media(max-width: 40em) {
-            .game-rules_card_close[aria-hidden]{
-                height: 2rem;
-                width: 1.5rem;
-                display: block;
-            }
-        }
-        .game-rules-mask{
-            position: absolute;
-            inset: 0;
-            background-color: rgba(0,0,0,.5);
-        }
-        /* End Game rules  */
-    .choices-hands{
+        }   
+    }
+    .main1__choices-hands{
         background-position: center;
         position: relative;
         max-width: 50%;
         margin: auto;
     }
-    .choices-hands img{
+    .main1__choices-hands img{
         max-width: 100%;
     }
-    @media(max-width: 50em) {
-        .choices-hands{
+    @media(max-width: 40em) {
+        .main1__choices-hands{
            max-width: 70%;
         }
+        .main1__choices-hands img{
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
-    .choices-hands :where(.scissors,.paper,.rock,.lizard,.spock){
+    .main1__choices-hands :where(.scissors,.paper,.rock,.lizard,.spock){
         position: absolute;
     }
     .scissors{
@@ -239,8 +254,8 @@ body{
         background-position: center;
         cursor: pointer;
     }
-    @media(max-width:40em){
-        .choices-hands :where(.scissors,.paper,.rock,.lizard,.spock){
+    @media(max-width:30em){
+        .main1__choices-hands :where(.scissors,.paper,.rock,.lizard,.spock){
             background-size: 50%,100%,100%;
         }
         .pattern{
@@ -256,12 +271,75 @@ body{
     /* End main  */
     /* Start Rules button 'phone version'  */
     @media(min-width: 40em) {
-        .button_phone-version{
+        .button--phone-version{
             position: absolute;
             bottom: 2rem;
             right: 2rem;
         }
     }
     /* End Rules button 'phone version'  */
+/* End template1 */
+/* Start template2 */
+.main2{
+    margin-bottom: auto;
+}
+@media(max-width: 40em){
+    
+}
+.main2 > section > section > p{
+    color: white!important;
+    text-align: center;
+    margin-block: 3rem;
+    font-size: 1.3rem;
+}
+@media(max-width: 40em){
+    .main2 section section > p{
+        font-size: 1rem;
+        order: 2;
+    }
+}
+.main2 section > section{
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+@media(max-width: 40em){
+    .main2 section section{
+        padding-top: 3rem;
+    }
+}
+.main2 {
+    justify-content: center;    
+    align-items: center;
+}
+.result_playAgain > p{
+    font-size: 3rem;
+    max-width: fit-content;
+    margin-block: 1rem;
+    color: white;
+}
+.result_playAgain{
+    justify-content: center;
+    margin-inline: 3rem;
+    padding-bottom: 2rem;
+    align-items: center;
+}
+.result_playAgain > button{
+    padding-inline: 3rem;
+    padding-block: .75rem;
+    font-size: 1.5rem;
+    width: max-content;
+    background-color: white;
+    border-radius: .4rem;
+    
+}
+/* Start style javascript DOM */
+.shadow-emote{
+    background-color: rgba(0,0,0,.2);
+    width: 11.5rem;
+    height: 11.5rem;
+}
+    /* End style javascript DOM */
 
+    /* End template2 */
 /* End Block  */

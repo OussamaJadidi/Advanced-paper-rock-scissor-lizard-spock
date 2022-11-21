@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- link of website Icon  -->
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
     <!-- Website title  -->
@@ -19,40 +19,72 @@
   </head>
   <body>
     <div class="container flex-on-column">
+      <!-- Start header  -->
       <header class="header | flex-on-row | margin-block">
         <img src="./images/logo-bonus.svg" alt="rock paper scissors lizard spock">
         <div class="score-box">
           <h5 class="color-score">SCORE</h5>
-          <p class="score-box_number | color-text | fw-700">12</p>
+          <p class="score-box__number | color-text | fw-700">12</p>
         </div>
       </header>
-      <template id="choose-emote-hand">
-        <main class="main1">
-          <div class="game-rules">
-            <div class="game-rules_card">
-                <span class="flex-on-row">
-                  <h3 class="game-rules_card_label | color-text fw-700">RULES</h3>
-                  <img class="game-rules_card_close" src="./images/icon-close.svg" alt="close button">
-                </span>
-                <img class="game-rules_card_img" src="./images/image-rules-bonus.svg" alt="">
-                <img class="game-rules_card_close" aria-hidden="true" src="./images/icon-close.svg" alt="close button">
-            </div>
-            <div class="game-rules-mask"></div>
-          </div>
-          <section class="choices-hands | margin-block">
-            <img src="./images/bg-pentagon.svg" alt="">
-            <div class="scissors pattern"></div>
-            <div class="paper pattern"></div>
-            <div class="rock pattern"></div>
-            <div class="lizard pattern"></div>
-            <div class="spock pattern"></div>
-          </section>
-        </main>
-      </template>
-      <template id="show-both-choices">
-
-      </template>
-      <button class="button | rules-button | button_phone-version">RULES</button>
+      <!-- End Header  -->
+      <!-- Start game rules page -->
+      <div class="game-rules">
+        <div class="game-rules-card">
+            <span class="flex-on-row">
+              <h3 class="game-rules-card__label | color-text fw-700">RULES</h3>
+              <img class="game-rules-card__close" src="./images/icon-close.svg" alt="close button">
+            </span>
+            <img class="game-rules-card__img" src="./images/image-rules-bonus.svg" alt="">
+            <img class="game-rules-card__close" aria-hidden="true" src="./images/icon-close.svg" alt="close button">
+        </div>
+        <div class="game-rules--mask"></div>
+      </div>
+      <!-- End game rules page  -->
     </div>
+    <!-- Start template page of choosing hand emote  -->
+    <template id="choose-hand-emote">
+      <main class="main1">
+        <section class="main1__choices-hands | margin-block">
+          <img src="./images/bg-pentagon.svg" alt="">
+          <div class="scissors pattern"></div>
+          <div class="paper pattern"></div>
+          <div class="rock pattern"></div>
+          <div class="lizard pattern"></div>
+          <div class="spock pattern"></div>
+        </section>
+      </main>
+    </template>
+    <!-- End template page of choosing hand emote  -->
+    <!-- Start template page of showing both choices (user and computer)  -->
+    <template id="show-both-choices" >
+      <main class="main2 | flex-on-column">
+        <section class="main2__block-container flex-on-row">
+          <section class="user-choice | flex-on-column">
+            <p class="fw-600">YOU PICKED</p>
+            <div class="pattern lizard"></div>
+          </section>
+          
+          <section class="computer-choice | flex-on-column">
+            <p class="fw-600">THE HOUSE PICKED</p>
+            <div class="computer-choice__img | shadow-emote pattern"></div>
+          </section>
+        </section>
+      </main>
+    </template>
+    <!-- End template page of showing both choices (user and computer)  -->
+    <!-- Start template page of showing the game result (win or lose)  -->
+    <template id="game-result">
+      <div class="result_playAgain | flex-on-column" aria-hidden="true">
+        <p >YOU WIN</p>
+        <button class="color-text">PLAY AGAIN</button>
+      </div>
+    </template>
+    <!-- End template page of showing the game result (win or lose)  -->
+    <!-- Start template of rules button  -->
+    <template id="button-template">
+      <button class="rules-button | button" onclick="openRules()">RULES</button>
+    </template>
+    <!-- End template of rules button  -->
   </body>
 </html>
