@@ -324,14 +324,14 @@ body{
     padding-bottom: 2rem;
     align-items: center;
 }
-.result_playAgain > button{
+.playAgain{
     padding-inline: 3rem;
     padding-block: .75rem;
     font-size: 1.5rem;
     width: max-content;
     background-color: white;
     border-radius: .4rem;
-    
+    cursor: pointer;
 }
 /* Start style javascript DOM */
 .shadow-emote{

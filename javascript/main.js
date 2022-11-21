@@ -36,10 +36,20 @@
     })
 // End Closing the rules guide
 
+// Start show the score number 
+    let scoreNumberElement = document.querySelector(".score-box__number");
+    let scoreNumberElement_content=scoreNumberElement.textContent;
+    if(sessionStorage.scoreNumber){
+        scoreNumberElement.textContent= sessionStorage.scoreNumber;
+    }else{
+        scoreNumberElement.textContent=0;
+        sessionStorage.scoreNumber = +scoreNumberElement_content;
+    }
+// End show the score number 
 
 // Start results game page
     let pattern = document.querySelectorAll(".pattern")
-/* * */    pattern.forEach((hand_emote)=>{
+    pattern.forEach((hand_emote)=>{
         hand_emote.addEventListener("click",function(){
             /* removing the template of id="choose-hand-emote" */
             removeOldTemplate("main1")
@@ -91,27 +101,38 @@
                 /*remove the old shadow emote*/
                 removeShadowEmote(".computer-choice > div")
                 /*replace the old shadow emote with the computer choice*/
-                replacingShadowEmote(".computer-choice",randomChoice[random]["className"])
+                let computerChoiceClassName=randomChoice[random]["className"];
+                replacingShadowEmote(".computer-choice",computerChoiceClassName)
             // End showing what the computer choose
         
-            // Start showing rsult game and "try again" button 
-                let mediaQuery = window.matchMedia("(min-width: 50em)");
-                let gameResultsTemplate = document.getElementById("game-result")
-                let gameResultsTemplate__content = gameResultsTemplate.content.cloneNode(true);
-                let userChoice = document.querySelector(".user-choice")
-                if(mediaQuery.matches){
-                    userChoice.after(gameResultsTemplate__content);
-                }else{
-                    document.querySelector(".main2__block-container").after(gameResultsTemplate__content)
-                }
-            // Start showing rsult game and "try again" button 
+            // Start showing result game and "try again" button 
+            let mediaQuery = window.matchMedia("(min-width: 50em)");
+            let gameResultsTemplate = document.getElementById("game-result")
+            let gameResultsTemplate__content = gameResultsTemplate.content.cloneNode(true);
+            let userChoice = document.querySelector(".user-choice")
+            if(mediaQuery.matches){
+                userChoice.after(gameResultsTemplate__content);
+            }else{
+                document.querySelector(".main2__block-container").after(gameResultsTemplate__content)
+            }
+            let result = document.querySelector(".result");
+            if(gameRules(user_emote,computerChoiceClassName)===true){result.textContent =  "YOU WIN"}
+            else if(gameRules(user_emote,computerChoiceClassName)===false){result.textContent =  "YOU LOSE"}
+            else{result.textContent =  "equality"};
+            // End showing result game and "try again" button  
+            // start update the score number 
+                if(gameRules(user_emote,computerChoiceClassName)===true){
+                    sessionStorage.scoreNumber = +sessionStorage.scoreNumber + 1;
+                    scoreNumberElement.textContent= sessionStorage.scoreNumber;
+                };
+            // End update the score number
         })
     })
     // Start writing function for top script
         /*removing the old template content Function*/
-        function removeOldTemplate(templateContentName){
-            document.getElementsByClassName(templateContentName)[0].remove();
-        }
+            function removeOldTemplate(templateContentName){
+                document.getElementsByClassName(templateContentName)[0].remove();
+            }
         /*removing shadow emote Function*/ 
             function removeShadowEmote(x){
                 let shadow_emote = document.querySelector(x);
@@ -142,6 +163,20 @@
                     }
                 document.querySelector(x).appendChild(element)
             }
+            /* the game rules (who win who)*/
+            function gameRules(x,y){
+                if (x==y){
+                    return "equality";
+                }
+                switch(x){
+                    case "scissors": return (y=="paper" || y=="lizard")? true: false;   break;          
+                    case "paper": return (y=="rock" || y=="spock")? true: false;        break;
+                    case "rock": return (y=="lizard" || y=="scissors")? true: false;    break;
+                    case "lizard": return (y=="spock" || y=="paper")? true: false;      break;
+                    case "spock": return (y=="scissors" || y=="rock")? true: false;     break;
+                }
+            }
     // End writing function for top
+    
 // End results game page
   
