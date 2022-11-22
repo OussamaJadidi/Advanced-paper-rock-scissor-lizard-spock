@@ -1,17 +1,53 @@
 /* modes page Script*/
-// let monsterMode = document.querySelector(".monster-mode .mode-type")
-// let modesPage = document.querySelector(".modes-page");
-// let gamePage = document.querySelector(".game-page");
-// monsterMode.addEventListener("click",function(){
-//     modesPage.style.display="none";
-//     gamePage.style.display="block"
-// })
+var mode;
+var header = document.querySelector(".header")
+var template1;
+var content1;
+let monsterMode = document.querySelector(".monster-mode .mode-type")
+let regularMode = document.querySelector(".regular-mode .mode-type")
+// Start on click in "monster mode" 
+    function updateHeaderLogo(gameMode){
+        let modesPage = document.querySelector(".modes-page");
+        let gamePage = document.querySelector(".game-page");
+        let headerLogo = document.querySelector(".header img")
+        modesPage.style.display="none";
+        gamePage.style.display="flex";
+
+        let modeLogoSrc = gameMode=="monster"? "./images/logo-bonus.svg": "./images/logo.svg"
+        let modeLogoAlt = gameMode=="monster"? "rock paper scissors lizard spock": "rock paper scissors"
+        headerLogo.setAttribute("src",modeLogoSrc)
+        headerLogo.setAttribute("alt",modeLogoAlt)
+    }
+    monsterMode.addEventListener("click",function(){
+        mode="monster";
+        updateHeaderLogo(mode)
+        loadEmoteHandChoices()
+        giveGameResults()
+    })
+    regularMode.addEventListener("click",function(){
+        mode="regular";
+        updateHeaderLogo(mode)
+        loadEmoteHandChoices()
+        giveGameResults()
+    })
+// End on click in "monster mode" 
+// Start on click on "regular mode" 
+    // document.addEventListener("click",(e)=>console.log(e.target))
+// End on click on "regulart mode" 
+
 /* game page Script*/
 // Start loading template of page1 (game rules + choosing emote hand)
-    let header= document.getElementsByClassName("header")[0];
-    let template1 = document.getElementById("choose-hand-emote");
-    let content1=  template1.content.cloneNode(true);
-    header.after(content1);  
+function loadEmoteHandChoices(){
+    if(mode=="monster"){
+        template1 = document.getElementById("choose-hand-emote-monster-mode");
+        content1=  template1.content.cloneNode(true);
+    }
+    if(mode=="regular"){
+        template1 = document.getElementById("choose-hand-emote-regular-mode");
+        content1=  template1.content.cloneNode(true);
+    }
+    header.after(content1);
+} 
 // End loading template of page1 (game rules + choosing emote hand)
    
 // Start loading rules button template 
@@ -57,10 +93,11 @@
 // End show the score number 
 
 // Start results game page
-    let pattern = document.querySelectorAll(".pattern")
+function giveGameResults(){
+    let pattern = document.querySelectorAll('.pattern')
     pattern.forEach((hand_emote)=>{
         hand_emote.addEventListener("click",function(){
-            /* removing the template of id="choose-hand-emote" */
+            /* removing the template of id="choose-hand-emote-monster-mode" */
             removeOldTemplate("main1")
             removeOldTemplate("rules-button")
 
@@ -86,8 +123,10 @@
             // End showing what the user choose
 
             // Start choose random emote for computer 
-                let random = Math.floor((Math.random()*5)+1)//this random variable represnt the key name of the randomChoice object
-                randomChoice={
+                /*this random variable represnt the key name of the randomChoice object*/
+                var random =mode=="monster"? Math.floor((Math.random()*5)+1): Math.floor((Math.random()*3)+1);
+                
+                let randomChoice={
                     1:{
                         className:"scissors"
                     },
@@ -111,23 +150,27 @@
                 removeShadowEmote(".computer-choice > div")
                 /*replace the old shadow emote with the computer choice*/
                 let computerChoiceClassName=randomChoice[random]["className"];
-                replacingShadowEmote(".computer-choice",computerChoiceClassName)
+                setTimeout(replacingShadowEmote,700,".computer-choice",computerChoiceClassName)
             // End showing what the computer choose
         
             // Start showing result game and "try again" button 
-            let mediaQuery = window.matchMedia("(min-width: 50em)");
-            let gameResultsTemplate = document.getElementById("game-result")
-            let gameResultsTemplate__content = gameResultsTemplate.content.cloneNode(true);
-            let userChoice = document.querySelector(".user-choice")
-            if(mediaQuery.matches){
-                userChoice.after(gameResultsTemplate__content);
-            }else{
-                document.querySelector(".main2__block-container").after(gameResultsTemplate__content)
+            function showingResult_PlayAgainButton(){
+                let mediaQuery = window.matchMedia("(min-width: 50em)");
+                let gameResultsTemplate = document.getElementById("game-result")
+                let gameResultsTemplate__content = gameResultsTemplate.content.cloneNode(true);
+                let userChoice = document.querySelector(".user-choice")
+                if(mediaQuery.matches){
+                    userChoice.after(gameResultsTemplate__content);
+                }else{
+                    document.querySelector(".main2__block-container").after(gameResultsTemplate__content)
+                }
+                let result = document.querySelector(".result");
+                if(gameRules(user_emote,computerChoiceClassName)===true){result.textContent =  "YOU WIN"}
+                else if(gameRules(user_emote,computerChoiceClassName)===false){result.textContent =  "YOU LOSE"}
+                else{result.textContent =  "equality"};
+                tryAgain();
             }
-            let result = document.querySelector(".result");
-            if(gameRules(user_emote,computerChoiceClassName)===true){result.textContent =  "YOU WIN"}
-            else if(gameRules(user_emote,computerChoiceClassName)===false){result.textContent =  "YOU LOSE"}
-            else{result.textContent =  "equality"};
+            setTimeout(showingResult_PlayAgainButton,1200)
             // End showing result game and "try again" button
 
             // start update the score number 
@@ -138,14 +181,16 @@
             // End update the score number
 
             // Start onclick play again 
-                let playAgain = document.querySelector(".playAgain");
-                playAgain.addEventListener("click",function(){
-                    window.location.reload();
-                    gameRules.style.display="none"
-                })
+                function tryAgain(){
+                    let playAgain = document.querySelector(".playAgain");
+                    playAgain.addEventListener("click",function(){
+                        window.location.reload();
+                    })
+                }
             // End onclick play again 
         })
     })
+}
     // Start writing function for top script
         /*removing the old template content Function*/
             function removeOldTemplate(templateContentName){

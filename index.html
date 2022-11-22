@@ -20,25 +20,25 @@
   </head>
   <body>
     <!-- Start modes page  -->
-    <!-- <div class="modes-page container flex-on-column">
+    <div class="modes-page container flex-on-column">
       <p class="choose-mode color-white" fw-700>Choose your mode</p>
       <div class="modes">
         <div class="regular-mode | flex-on-column">
-          <button class="mode-type">REGULAR MODE</button>
+          <button class="mode-type">REGULAR  &nbspMODE</button><!-- &nbsp == " " -->
           <img src="./images/image-rules.svg" alt="">
         </div>
         <div class="monster-mode | flex-on-column">
-          <button class="mode-type">MONSTER MODE</button>
+          <button class="mode-type">MONSTER &nbspMODE</button>
           <img src="./images/image-rules-bonus.svg" alt="">
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- End modes page  -->
     <!-- Start game page  -->
     <div class="game-page container flex-on-column">
       <!-- Start header  -->
       <header class="header | flex-on-row | margin-block">
-        <img src="./images/logo-bonus.svg" alt="rock paper scissors lizard spock">
+        <img src="" alt="">
         <div class="score-box">
           <h5 class="color-score">SCORE</h5>
           <p class="score-box__number | color-text | fw-700"></p>
@@ -60,11 +60,11 @@
       <!-- End game rules page  -->
     </div>
     <!-- End game page  -->
-    <!-- Start template page of choosing hand emote  -->
-    <template id="choose-hand-emote">
+    <!-- Start template of monster mode hand emotes  -->
+    <template id="choose-hand-emote-monster-mode">
       <main class="main1">
-        <section class="main1__choices-hands | margin-block">
-          <img src="./images/bg-pentagon.svg" alt="">
+        <section class="main1__choices-hands | margin-block" label="monster mode choices">
+          <img src="./images/bg-pentagon.svg" alt="" tabindex="-1">
           <div class="scissors pattern"></div>
           <div class="paper pattern"></div>
           <div class="rock pattern"></div>
@@ -73,7 +73,19 @@
         </section>
       </main>
     </template>
-    <!-- End template page of choosing hand emote  -->
+    <!-- End template of monster mode  hand emotes  -->
+    <!-- Start template of regular mode  hand emotes  -->
+    <template id="choose-hand-emote-regular-mode">
+      <main class="main1">
+        <section class="main1__choices-hands | margin-block" label="monster mode choices">
+          <img src="./images/bg-triangle.svg" alt="" tabindex="-1">
+          <div class="scissors pattern regularMode"></div>
+          <div class="paper pattern regularMode"></div>
+          <div class="rock pattern regularMode"></div>
+        </section>
+      </main>
+    </template>
+    <!-- End template of regular mode hand emotes  -->
     <!-- Start template page of showing both choices (user and computer)  -->
     <template id="show-both-choices" >
       <main class="main2 | flex-on-column">

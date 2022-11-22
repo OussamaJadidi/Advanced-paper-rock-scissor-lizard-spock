@@ -23,8 +23,8 @@ body{
     font-family: 'Barlow Semi Condensed', sans-serif;
     letter-spacing: 2px;
 }
-.game-page.container{
-    /* display:none; */
+.game-page.container.flex-on-column{
+    display: none;
 }
 /* I gonna work with css CUBE metholodogie in this project*/
 
@@ -54,6 +54,7 @@ body{
     color: white;
     letter-spacing: 3px;
     margin-inline: auto;
+    margin-block: 0;
     cursor: pointer;
 }
 
@@ -180,9 +181,17 @@ body{
     /* End Game rules  */
     /* Start main1  */
     .main1{
-        margin-bottom: 4rem;
+        /* margin-bottom: 4rem; */
     }
-   
+    @media(min-width: 40em){
+        @media(min-height: 760px){
+            .main1{
+                /* position: relative;
+                bottom: 20%; */
+                padding-top: 3rem;
+            }
+        }   
+    }
     .main1__choices-hands{
         background-position: center;
         position: relative;
@@ -211,7 +220,13 @@ body{
         box-shadow: 0 5px rgba(0,0,0,.2) inset, 0 5px hsl(40, 84%, 40%);
         top: -3rem;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%); 
+    }
+    .regularMode.scissors{
+        left: 70%;
+        transform: none;
+        right: 0;
+
     }
     .paper{
         background: url("../images/icon-paper.svg") content-box,linear-gradient(white,white) padding-box,
@@ -220,12 +235,21 @@ body{
         top: 3rem;
         right: -2.5rem;
     }
+    .regularMode.paper{
+        top: -3rem;
+        left: -1.5rem;
+    }
     .rock{
         background: url("../images/icon-rock.svg") content-box,linear-gradient(white,white) padding-box,
         var(--bc-rock) border-box;  
         box-shadow: 0 5px rgba(0,0,0,.2) inset, 0 5px hsl(349, 71%, 35%);
         bottom: -3rem;
         left: 60%;
+    }
+    .regularMode.rock{
+        bottom: .2rem;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .lizard{
         background: url("../images/icon-lizard.svg") content-box,linear-gradient(white,white) padding-box,
