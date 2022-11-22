@@ -23,7 +23,9 @@ body{
     font-family: 'Barlow Semi Condensed', sans-serif;
     letter-spacing: 2px;
 }
-
+.game-page.container{
+    /* display:none; */
+}
 /* I gonna work with css CUBE metholodogie in this project*/
 
 /* Start Composition  */
@@ -51,7 +53,7 @@ body{
     border-radius: .5rem;
     color: white;
     letter-spacing: 3px;
-    margin: auto;
+    margin-inline: auto;
     cursor: pointer;
 }
 
@@ -108,6 +110,7 @@ body{
 
     /* start Game rules page*/
     .game-rules{
+        display: none;
         position: absolute;
         inset: 0;
     }
@@ -179,14 +182,7 @@ body{
     .main1{
         margin-bottom: 4rem;
     }
-    @media(min-width: 40em){
-        @media(min-height: 760px){
-            .main1{
-                position: relative;
-                bottom: 20%;
-            }
-        }   
-    }
+   
     .main1__choices-hands{
         background-position: center;
         position: relative;

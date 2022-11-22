@@ -1,10 +1,19 @@
+/* modes page Script*/
+// let monsterMode = document.querySelector(".monster-mode .mode-type")
+// let modesPage = document.querySelector(".modes-page");
+// let gamePage = document.querySelector(".game-page");
+// monsterMode.addEventListener("click",function(){
+//     modesPage.style.display="none";
+//     gamePage.style.display="block"
+// })
+/* game page Script*/
 // Start loading template of page1 (game rules + choosing emote hand)
     let header= document.getElementsByClassName("header")[0];
     let template1 = document.getElementById("choose-hand-emote");
     let content1=  template1.content.cloneNode(true);
-    header.after(content1)
+    header.after(content1);  
 // End loading template of page1 (game rules + choosing emote hand)
-    
+   
 // Start loading rules button template 
     let buttonRulesTemplate = document.querySelector("#button-template")
     let buttonRulesTemplate__content= buttonRulesTemplate.content.cloneNode(true);
@@ -119,13 +128,22 @@
             if(gameRules(user_emote,computerChoiceClassName)===true){result.textContent =  "YOU WIN"}
             else if(gameRules(user_emote,computerChoiceClassName)===false){result.textContent =  "YOU LOSE"}
             else{result.textContent =  "equality"};
-            // End showing result game and "try again" button  
+            // End showing result game and "try again" button
+
             // start update the score number 
                 if(gameRules(user_emote,computerChoiceClassName)===true){
                     sessionStorage.scoreNumber = +sessionStorage.scoreNumber + 1;
                     scoreNumberElement.textContent= sessionStorage.scoreNumber;
                 };
             // End update the score number
+
+            // Start onclick play again 
+                let playAgain = document.querySelector(".playAgain");
+                playAgain.addEventListener("click",function(){
+                    window.location.reload();
+                    gameRules.style.display="none"
+                })
+            // End onclick play again 
         })
     })
     // Start writing function for top script
@@ -179,4 +197,4 @@
     // End writing function for top
     
 // End results game page
-  
+
