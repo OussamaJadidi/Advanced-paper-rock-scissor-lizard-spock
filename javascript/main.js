@@ -169,15 +169,18 @@ function giveGameResults(){
                 else if(gameRules(user_emote,computerChoiceClassName)===false){result.textContent =  "YOU LOSE"}
                 else{result.textContent =  "equality"};
                 tryAgain();
+                updateRecord()
             }
             setTimeout(showingResult_PlayAgainButton,1200)
             // End showing result game and "try again" button
 
             // start update the score number 
-                if(gameRules(user_emote,computerChoiceClassName)===true){
-                    sessionStorage.scoreNumber = +sessionStorage.scoreNumber + 1;
-                    scoreNumberElement.textContent= sessionStorage.scoreNumber;
-                };
+                function updateRecord(){
+                    if(gameRules(user_emote,computerChoiceClassName)===true){
+                        sessionStorage.scoreNumber = +sessionStorage.scoreNumber + 1;
+                        scoreNumberElement.textContent= sessionStorage.scoreNumber;
+                    };
+                }
             // End update the score number
 
             // Start onclick play again 
