@@ -2,7 +2,7 @@
 
 the project is a fully responsive game webApp of "rock paper scissors lizard rock" That have too modes (regulat mode & monster mode)
 
-- See the live version --> : "https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH"
+- See the live version --> : "https://oussamajadidi.github.io/Advanced-paper-rock-scissor-lizard-spock/"
 
 ## Technologies that i used to build that porject
 
