@@ -17,7 +17,7 @@ the project is a fully responsive game webApp of "rock paper scissors lizard roc
 - First i took the design from FrontEnd Mentor website projects "https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH"
 - Then i add some Futures/ tricks/ animations from me and apply it to the original design that i code
 
-### Rules
+## Rules
 
 If the player wins, they gain 1 point. If the computer wins, the player loses one point.
 
@@ -37,8 +37,6 @@ If the player wins, they gain 1 point. If the computer wins, the player loses on
 - Scissors beats Lizard
 - Paper beats Spock
 - Rock beats Scissors
-
-#### ScreenShots of the project
 - Lizard beats Paper
 - Spock beats Rock
 
